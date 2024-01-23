@@ -4,16 +4,18 @@ import { useState, useRef } from "react";
 import { checkValidatData } from "../utils/validate";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../utils/firebase";
-import { useNavigate } from "react-router-dom";
 import { updateProfile } from "firebase/auth";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
+import { USER_AVATAR } from "../utils/constant";
+import { BG_IMAGE } from "../utils/constant";
 
 const Login = () => {
 
     const [isSignInForm, setIsSignInForm] = useState(true)
     const [errorMessage, setErrorMesssage] = useState(null);
-    const navigate = useNavigate();
+    const [errorSignUp, setErrorSignUp] = useState(null);
+    const [errorSignIn, setErrorSignIn] = useState(null);
     const dispatch = useDispatch();
 
     const email = useRef(null);
@@ -37,19 +39,18 @@ const Login = () => {
                     // Signed up
                     const user = userCredential.user;
                     updateProfile(user, {
-                        displayName: "name.current.value", photoURL: "https://avatars.githubusercontent.com/u/141524374?s=400&u=8b5395804b55dcdd7e7ebbe2182a93337126f98e&v=4"
+                        displayName: "name.current.value", photoURL: USER_AVATAR
                     }).then(() => {
                         const { uid, email, displayName, photoURL } = auth.currentUser;
                         dispatch(addUser({ uid: uid, email: email, displayName: displayName, photoURL: photoURL }));
-                        navigate("/browse");
                     }).catch((error) => {
                         setErrorMesssage(error.message);
                     });
-                    console.log(user)
                 })
                 .catch((error) => {
                     const errorCode = error.code;
                     const errorMessage = error.message;
+                    setErrorSignUp(errorMessage);
                     console.log(errorCode + "" + errorMessage)
                 });
         }
@@ -59,13 +60,12 @@ const Login = () => {
                 .then((userCredential) => {
                     // Signed in 
                     const user = userCredential.user;
-                    navigate("/browse");
                     console.log(user);
                 })
                 .catch((error) => {
                     const errorCode = error.code;
                     const errorMessage = error.message;
-                    // setErrorMesssage(<p className="text-red-500 font-bold ">Invalid Credential</p>)
+                    setErrorSignIn(errorMessage);
                     console.log(errorCode + "" + errorMessage)
                 });
         }
@@ -75,7 +75,7 @@ const Login = () => {
         <div>
             <Header />
             <div className="absolute">
-                <img src='https://assets.nflxext.com/ffe/siteui/vlv3/fc164b4b-f085-44ee-bb7f-ec7df8539eff/d23a1608-7d90-4da1-93d6-bae2fe60a69b/IN-en-20230814-popsignuptwoweeks-perspective_alpha_website_large.jpg' alt='Error' />
+                <img src={BG_IMAGE} alt='Error' className="h-screen w-screen" />
             </div>
             <form
                 onClick={(e) => e.preventDefault()}
@@ -106,7 +106,9 @@ const Login = () => {
                     className="p-2 my-4 bg-gray-700 w-full rounded-lg"
                     required
                 />
-                <p className="text-red-500 font-bold py-2">{errorMessage}</p>
+                <p className="text-red-500 font-bold py-2">
+                    {errorMessage}{errorSignUp}{errorSignIn}
+                </p>
                 <button
                     className="p-3 my-2 mt-4 border bg-red-700 w-full rounded-lg"
                     onClick={handleButtonClick}>
