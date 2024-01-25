@@ -116,11 +116,11 @@ const Login = () => {
                 </button>
                 {isSignInForm ?
                     <p
-                        className="py-6 cursor-pointer"
+                        className="py-6 cursor-pointer text-gray-100 hover:text-gray-300"
                         onClick={toggleSignInForm}
                     >New to Netflix? Sign Up now</p> :
                     <p
-                        className="py-6 cursor-pointer"
+                        className="py-6 cursor-pointer text-gray-100 hover:text-gray-300"
                         onClick={toggleSignInForm}
                     >Already Registered? Sign In</p>
                 }

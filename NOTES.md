@@ -28,6 +28,10 @@
 - Update store with trailer video
 - Embedded the youtube video and make it autoplay and mute
 - Tailwind classes to style
+- Build secondary component
+- Build movie list
+- Build movie card
+- usePopular movies custom hook
 
 # Features
 

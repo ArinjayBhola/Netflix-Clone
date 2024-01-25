@@ -39,7 +39,7 @@ const Header = () => {
         });
     }
     return (
-        <div className='absolute px-8 bg-gradient-to-b from-black z-10 w-full flex justify-between'>
+        <div className='absolute px-8 bg-gradient-to-b from-black z-10 w-full flex justify-between -top-2'>
             <img src={LOGO_URL} alt='Logo' className='w-44 h-20 mt-3' />
 
             <div className='flex p-2'>

@@ -8,14 +8,12 @@ const MainContainer = () => {
     if (!movies) return;
 
     const randomIndex = Math.floor(Math.random() * movies.length);
-    console.log(randomIndex);
-    console.log(movies);
 
     const mainMovie = movies[randomIndex];
-    const { original_title, overview, id, poster_path } = mainMovie;
+    const { original_title, overview, id } = mainMovie;
     return (
         <div>
-            <VideoTitle title={original_title} overview={overview} logo={poster_path} />
+            <VideoTitle title={original_title} overview={overview} />
             <VideoBackground movieId={id} />
         </div>
     )
