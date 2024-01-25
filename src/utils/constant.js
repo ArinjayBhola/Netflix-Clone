@@ -21,3 +21,5 @@ export const TOP_RATED_MOVIE_API = "https://api.themoviedb.org/3/movie/top_rated
 export const UPCOMING_MOVIE_API = "https://api.themoviedb.org/3/movie/upcoming?&page=1";
 
 export const MOVIE_LOGO_URL = "https://image.tmdb.org/t/p/w500/";
+
+export const SUPPORTED_LANGUAGES = [{ identifier: "en", name: "English" }, { identifier: "hi", name: "हिंदी" }]
