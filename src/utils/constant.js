@@ -8,18 +8,12 @@ export const API_OPTION = {
     method: 'GET',
     headers: {
         accept: 'application/json',
-        Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmNGRiMjE2NjczMTIzM2RmMWEyODhmMmJlMGQ4YTM3MCIsInN1YiI6IjY1YWNkN2VhZDEwMGI2MDBjYjgwMmFlNSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.OqX9jhqlYI32kvyP7woNYeAyyLOf__P_rDqgW7IdZSg'
+        Authorization: 'Bearer' + process.env.REACT_APP_TMDB_KEY,
     }
-};
-
-export const NOW_PLAYING_MOVIE_API = 'https://api.themoviedb.org/3/movie/now_playing?&page=1';
-
-export const POPULAR_MOVIE_API = "https://api.themoviedb.org/3/movie/popular?&page=1";
-
-export const TOP_RATED_MOVIE_API = "https://api.themoviedb.org/3/movie/top_rated?&page=1";
-
-export const UPCOMING_MOVIE_API = "https://api.themoviedb.org/3/movie/upcoming?&page=1";
+}
 
 export const MOVIE_LOGO_URL = "https://image.tmdb.org/t/p/w500/";
 
-export const SUPPORTED_LANGUAGES = [{ identifier: "en", name: "English" }, { identifier: "hi", name: "हिंदी" }]
+export const SUPPORTED_LANGUAGES = [{ identifier: "en", name: "English" }, { identifier: "hi", name: "हिंदी" }];
+
+export const OPENAI_API_KEY = process.env.REACT_APP_OPENAI_API_KEY;
