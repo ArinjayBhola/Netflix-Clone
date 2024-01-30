@@ -6,7 +6,7 @@ import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "fire
 import { auth } from "../utils/firebase";
 import { updateProfile } from "firebase/auth";
 import { useDispatch } from "react-redux";
-import { addUser } from "../utils/userSlice";
+import { addUser } from "../utils/redux/userSlice";
 import { USER_AVATAR } from "../utils/constant";
 import { BG_IMAGE } from "../utils/constant";
 
@@ -75,11 +75,11 @@ const Login = () => {
         <div>
             <Header />
             <div className="absolute">
-                <img src={BG_IMAGE} alt='Error' className="h-screen w-screen" />
+                <img src={BG_IMAGE} alt='Error' className="h-screen object-cover w-screen" />
             </div>
             <form
                 onClick={(e) => e.preventDefault()}
-                className="absolute p-12 bg-black w-3/12 mx-auto my-28 left-0 right-0 text-white opacity-80">
+                className="absolute p-12 bg-black w-full md:w-3/12 mx-auto my-28 left-0 right-0 text-white opacity-80">
                 <h1
                     className="font-bold py-4 ml-2 text-3xl">
                     {isSignInForm ? "Sign In" : "Sign Up"}

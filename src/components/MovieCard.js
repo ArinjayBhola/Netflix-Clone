@@ -10,7 +10,7 @@ const MovieCard = ({ posterPath, id }) => {
 
     return (
         <div
-            className='w-48 mr-2 relative transition-transform duration-300 hover:scale-x-125 hover:scale-y-95 hover:z-50'
+            className='w-32 md:w-48 mr-2 relative transition-transform duration-300 hover:scale-x-125 hover:scale-y-95 hover:z-50'
             onMouseEnter={() => setIsHover(true)}
             onMouseLeave={() => setIsHover(false)}
         >
@@ -24,7 +24,6 @@ const MovieCard = ({ posterPath, id }) => {
                                 className='ml-2 rounded-lg'
                             />
                         </Link>
-                        <button className='absolute bottom-5 left-10 p-2 bg-gray-300 opacity-75 hover:bg-gray-500 rounded-xl'>Add to watchlist</button>
                     </div>
                 ) : (
                     <img

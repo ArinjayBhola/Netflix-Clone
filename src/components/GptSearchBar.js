@@ -3,7 +3,7 @@ import lang from '../utils/languageConstant'
 import { useDispatch, useSelector } from 'react-redux'
 import openai from '../utils/openai'
 import { API_OPTION } from '../utils/constant'
-import { addGptMovieResult } from '../utils/gptSlice'
+import { addGptMovieResult } from '../utils/redux/gptSlice'
 import Error from './Error'
 
 const GptSearchBar = () => {
@@ -40,8 +40,8 @@ const GptSearchBar = () => {
         dispatch(addGptMovieResult({ movieNames: gptMovies, movieResults: tmdbResults }));
     }
     return (
-        <div className='pt-[10%] flex justify-center'>
-            <form className='w-1/2 bg-black grid grid-cols-12' onSubmit={(e) => e.preventDefault()}>
+        <div className='pt-[45%] md:pt-[10%] flex justify-center'>
+            <form className='w-full md:w-1/2 bg-black grid grid-cols-12' onSubmit={(e) => e.preventDefault()}>
                 <input
                     ref={searchText}
                     type='text'
