@@ -2,11 +2,24 @@
 import React, { useState } from 'react'
 import { MOVIE_LOGO_URL } from '../utils/constant'
 import { Link } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { addMovieData, removeMovieData } from '../utils/redux/movieSlice'
 
-const MovieCard = ({ posterPath, id }) => {
+const MovieCard = ({ posterPath, id, data }) => {
     const [isHover, setIsHover] = useState(false)
+    const dispatch = useDispatch()
 
     if (!posterPath) return null;
+
+    const addMovieWatchlist = () => {
+        dispatch(addMovieData(data));
+    }
+
+    const removeMovieWatchlist = () => {
+        dispatch(removeMovieData());
+    }
+
+    const watchListSelector = useSelector((store) => store.movies.watchList)
 
     return (
         <div
@@ -24,6 +37,18 @@ const MovieCard = ({ posterPath, id }) => {
                                 className='ml-2 rounded-lg'
                             />
                         </Link>
+                        {
+                            !watchListSelector ? (
+                                <button
+                                    className='absolute bg-gray-300 bottom-5 left-10 p-2 opacity-75 hover:bg-gray-200 hover:opacity-80 rounded-lg'
+                                    onClick={addMovieWatchlist}
+                                >Add to Watchlist</button>
+                            ) : (
+                                <button
+                                    className='absolute w-28 bg-gray-300 bottom-5 left-10 p-1 opacity-75 hover:bg-gray-200 hover:opacity-80 rounded-lg'
+                                    onClick={removeMovieWatchlist}
+                                >Remove from Watchlist</button>
+                            )}
                     </div>
                 ) : (
                     <img
