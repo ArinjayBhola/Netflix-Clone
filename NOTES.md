@@ -38,7 +38,7 @@
 - Get Open AI Api Key
 - Gpt Search API Call
 - fetched gptMoviesSuggestions from TMDB
-- created gptSlice added data
+- created geminiSlice added data
 - Resused Movie List component to make movie suggestion container
 - Memoization
 - Added .env file
